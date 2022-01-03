@@ -5,7 +5,10 @@ import {
 } from "code-surfer";
 import { github, vsDark } from "@code-surfer/themes";
 import appOverview from "./app_overview.png";
-
+import appOverview0 from "./app_overview_step_0.png";
+import appOverview1 from "./app_overview_step_1.png";
+import appOverview2 from "./app_overview_step_2.png";
+import appOverview3 from "./app_overview_step_3.png";
 export const theme = github;
 
 <Head>
@@ -24,7 +27,7 @@ export const theme = github;
 
 # About Myself
 - Hi I'm Arix
-- SMU Senior
+- SMU Alumi
 - Previous VP and Hon Gen for .Hack
 - Software Engineer at NinjaVan 🚚
 
@@ -70,9 +73,66 @@ export const theme = github;
 
 <Step>
 
-<Image src={appOverview} style={{"width": "80vw", "background-size": "contain"}} />
+<Image src={appOverview0} style={{"background-size": "contain"}} />
 
-```html showNumbers
+```html
+<Page>
+    <Logo />
+</Page>
+```
+
+</Step>
+
+</CodeSurferColumns>
+
+---
+
+<CodeSurferColumns themes={[vsDark, github]}>
+
+<Step>
+
+<Image src={appOverview1} style={{"background-size": "contain"}} />
+
+```html
+<Page>
+    <Logo />
+    <SearchBarComponent />
+</Page>
+```
+
+</Step>
+
+</CodeSurferColumns>
+
+---
+
+<CodeSurferColumns themes={[vsDark, github]}>
+
+<Step>
+
+<Image src={appOverview2} style={{"background-size": "contain"}} />
+
+```html
+<Page>
+    <Logo />
+    <SearchBarComponent />
+    <FilterComponent />
+</Page>
+```
+
+</Step>
+
+</CodeSurferColumns>
+
+---
+
+<CodeSurferColumns themes={[vsDark, github]}>
+
+<Step>
+
+<Image src={appOverview3} style={{"background-size": "contain"}} />
+
+```html
 <Page>
     <Logo />
     <SearchBarComponent />
@@ -86,7 +146,6 @@ export const theme = github;
 </Step>
 
 </CodeSurferColumns>
-
 
 ---
 
