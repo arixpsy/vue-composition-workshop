@@ -24,24 +24,25 @@
 
 <script>
 import { NSpace, NSpin } from 'naive-ui'
-// import {
-//   ProductSearchInput,
-//   ProductList,
-//   ProductFilter,
-// } from './components/Products'
+import {
+  ProductSearchInput,
+  ProductList,
+  ProductFilter,
+} from './components/Products'
 import Page from '@/components/Commons/Page.vue'
+import api from '@/api'
 
 export default {
   components: {
-    NSpace, NSpin, Page
+    NSpace, NSpin, Page, ProductSearchInput, ProductList, ProductFilter
   },
   data() {
     return {
       searchTerm: '',
       products: [],
       isLoadingProducts: true,
-      brand: null,
-      category: null,
+      brand: [],
+      category: [],
     }
   },
   mounted() {
@@ -57,17 +58,22 @@ export default {
    },
   methods: {
     handleSearch: async function () {
-      await this.getProducts(this.searchTerm, brand.value, category.value)
+      await this.getProducts(this.searchTerm, this.brand, this.category)
     },
-    getProducts: async function () {
+    getProducts: async function (searchTerm, brand, category) {
       this.isLoadingProducts = true
-      return null
+      this.products = await api.getProducts(searchTerm, brand, category)
+      this.isLoadingProducts = false
     },
-    setBrands: function () {
-      return null
+    setBrand: function (brands) {
+      this.brand = brands
+    },
+    setCategory: function (categories) {
+      this.category = categories
     },
     resetFilter() {
-      return null
+      this.brand = []
+      this.category = []
     }
   }
  }

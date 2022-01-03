@@ -1,5 +1,6 @@
-import { ref } from "vue"
-import { ProductProp } from "@/types/products"
+import { ref } from 'vue'
+import { ProductProp } from '@/types/products'
+import api from '@/api'
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export default function useProducts() {
@@ -12,13 +13,10 @@ export default function useProducts() {
 		categories: Array<string>
 	): Promise<Array<ProductProp>> => {
 		isLoadingProducts.value = true
-		const res = await fetch(
-			`/api/products?search=${searchTerm}&brand=${brands}&category=${categories}`
-		)
-		const body = await res.json()
-		products.value = body.products
+		const data = await api.getProducts(searchTerm, brands, categories)
+		products.value = data
 		isLoadingProducts.value = false
-		return body.products
+		return data
 	}
 
 	const brands = ref<Array<string>>([])
@@ -26,23 +24,21 @@ export default function useProducts() {
 
 	const getBrands = async (): Promise<Array<string>> => {
 		isLoadingBrands.value = true
-		const res = await fetch(`/api/brands?`)
-		const body = await res.json()
-		brands.value = body.brands
+		const data = await api.getBrands()
+		brands.value = data
 		isLoadingBrands.value = false
-		return body.brands
+		return data
 	}
 
 	const categories = ref<Array<string>>([])
 	const isLoadingCategories = ref<boolean>(false)
 
-	const getCategories = async (): Promise<Array<ProductProp>> => {
+	const getCategories = async (): Promise<Array<string>> => {
 		isLoadingCategories.value = true
-		const res = await fetch(`/api/categories`)
-		const body = await res.json()
-		categories.value = body.categories
+		const data = await api.getCategories()
+		categories.value = data
 		isLoadingCategories.value = false
-		return body.categories
+		return data
 	}
 
 	return {

@@ -4,16 +4,34 @@ import {
   Step,
 } from "code-surfer";
 import { github, vsDark } from "@code-surfer/themes";
+import appOverview from "./app_overview.png";
 
 export const theme = github;
 
+<Head>
+  <title>.Hack Vue Composition Workshop</title>
+</Head>
+
+<Header>
+
+# .Hack
+
+</Header>
+
 # Vue Composition Workshop
 
-> By [Arix](https://arixpsy.dev)
+---
+
+# About Myself
+- Hi I'm Arix
+- SMU Senior
+- Previous VP and Hon Gen for .Hack
+- Software Engineer at NinjaVan 🚚
 
 ---
 
 # Agenda
+
 1. What is Composition API
 2. Why should I learn it
 3. Comparing Composition and Options API
@@ -21,10 +39,20 @@ export const theme = github;
 ---
 
 # What is Composition API
+- Release with Vue 3.0
+- New way to write vue components
+- Inspired by React Hooks
+- Aim towards large-scale vue projects
+- Simplify components and improve maintainability
 
 ---
 
 # Why should I learn it
+- Vue getting more popular in SG
+- Keep components more readable
+- Can be used with Options API
+- Better Typescript support
+- Easier transition to React
 
 ---
 
@@ -32,156 +60,49 @@ export const theme = github;
 
 ---
 
+# Example Application
+
+<Image src={appOverview} style={{"width": "80vw", "background-size": "contain"}} />
+
+---
+
+<CodeSurferColumns themes={[vsDark, github]}>
+
+<Step>
+
+<Image src={appOverview} style={{"width": "80vw", "background-size": "contain"}} />
+
+```html showNumbers
+<Page>
+    <Logo />
+    <SearchBarComponent />
+    <FilterComponent />
+    <ProductList>
+        <ProductItem>
+    </ProductList>
+</Page>
+```
+
+</Step>
+
+</CodeSurferColumns>
+
+
+---
+
+
 <CodeSurferColumns themes={[vsDark, github]}>
 
 <Step>
 
 ```js file=./project/composition/src/app.vue
+
 ```
 
 ```js file=./project/options/src/app.vue
+
 ```
 
 </Step>
 
 </CodeSurferColumns>
-
----
-
-<CodeSurfer>
-
-```js title="This is a title" subtitle="and this a subtitle"
-function lorem(ipsum, dolor = 1) {
-  const sit = ipsum == null ? 0 : ipsum.sit;
-  dolor = sit - amet(dolor);
-  return sit
-    ? consectetur(ipsum, 0, dolor < 0 ? 0 : dolor)
-    : [];
-}
-
-function incididunt(ipsum, ut = 1) {
-  ut = labore.et(amet(ut), 0);
-  const sit = ipsum == null ? 0 : ipsum.sit;
-
-  if (!sit || ut < 1) {
-    return [];
-  }
-
-  let dolore = 0;
-  let magna = 0;
-  const aliqua = new eiusmod(labore.ut(sit / ut));
-
-  while (dolore < sit) {
-    aliqua[magna++] = consectetur(
-      ipsum,
-      dolore,
-      (dolore += ut)
-    );
-  }
-
-  return aliqua;
-}
-```
-
-```js
-function lorem(ipsum, dolor = 1) {
-  const sit = ipsum == null ? 0 : ipsum.sit;
-  dolor = sit - amet(dolor);
-  return sit
-    ? consectetur(ipsum, 0, dolor < 0 ? 0 : dolor)
-    : [];
-}
-
-function adipiscing(...elit) {
-  if (!elit.sit) {
-    return [];
-  }
-
-  const sed = elit[0];
-  return eiusmod.tempor(sed) ? sed : [sed];
-}
-
-function incididunt(ipsum, ut = 1) {
-  ut = labore.et(amet(ut), 0);
-  const sit = ipsum == null ? 0 : ipsum.sit;
-
-  if (!sit || ut < 1) {
-    return [];
-  }
-
-  let dolore = 0;
-  let magna = 0;
-  const aliqua = new eiusmod(labore.ut(sit / ut));
-
-  while (dolore < sit) {
-    aliqua[magna++] = consectetur(
-      ipsum,
-      dolore,
-      (dolore += ut)
-    );
-  }
-
-  return aliqua;
-}
-```
-
-```diff 1[10:14],2[15:19],3[22:27],10:12
-
-```
-
-</CodeSurfer>
-
----
-
-<CodeSurferColumns themes={[vsDark, github]}>
-
-<Step>
-
-```js
-const magna = aliqua => aliqua.ut((enim, ad) => enim, 0);
-```
-
-```js
-const minim = (ad, enim) => dolore.magna(ad / enim);
-```
-
-</Step>
-
-<Step>
-
-```js
-const lorem = (ipsum, dolor, sit) => {
-  const amet = dolor - ipsum;
-  return consectetur.adipiscing(
-    {
-      elit: sed.eiusmod(sit - dolor) / amet + 2,
-    },
-    (tempor, incididunt) => ipsum + amet * incididunt
-  );
-};
-
-const magna = aliqua => aliqua.ut((enim, ad) => enim, 0);
-```
-
-```js
-const minim = (ad, enim) => dolore.magna(ad / enim);
-
-const sed = (eiusmod, tempor, incididunt) => {
-  const ut = tempor - eiusmod;
-  return labore.et(
-    {
-      amet: dolore.magna(incididunt - tempor) / ut + 2,
-    },
-    (aliqua, elit) => eiusmod + ut * elit
-  );
-};
-```
-
-</Step>
-
-</CodeSurferColumns>
-
----
-
-docs:  
-[codesurfer.pomb.us](https://codesurfer.pomb.us)

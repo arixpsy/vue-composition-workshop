@@ -1,24 +1,3 @@
-<script setup lang="ts">
-import { onMounted, ref, defineEmits } from 'vue'
-import { NCard, NCollapse, NCollapseItem, NText } from 'naive-ui'
-import useProducts from '@/composables/useProducts'
-
-const { brands, getBrands, categories, getCategories } = useProducts()
-const brandInput = ref<Array<string>>([])
-const categoryInput = ref<Array<string>>([])
-const emit = defineEmits(['resetFilter'])
-
-const resetFilter = () => {
-  brandInput.value = []
-  categoryInput.value = []
-  emit('resetFilter')
-}
-
-onMounted(() => {
-	getBrands()
-	getCategories()
-})
-</script>
 <template>
 	<NCard title="Filters">
 		<template #header-extra>
@@ -53,13 +32,46 @@ onMounted(() => {
 	</NCard>
 </template>
 
+<script>
+import { NCard, NCollapse, NCollapseItem, NText } from 'naive-ui'
+import api from '@/api'
+
+export default {
+	components: {
+		NCard,
+		NCollapse,
+		NCollapseItem,
+		NText,
+	},
+	data() {
+		return {
+			brandInput: [],
+			categoryInput: [],
+			brands: [],
+			categories: [],
+		}
+	},
+	methods: {
+		resetFilter() {
+			this.brandInput = []
+			this.categoryInput = []
+			this.$emit('resetFilter')
+		},
+	},
+	async mounted() {
+		this.brands = await api.getBrands()
+		this.categories = await api.getCategories()
+	},
+}
+</script>
+
 <style scoped>
 .n-card {
 	width: 600px;
 	margin: 20px 0;
 }
 .hover-pointer:hover {
-  cursor: pointer;
-  color: royalblue;
+	cursor: pointer;
+	color: royalblue;
 }
 </style>
