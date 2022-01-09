@@ -3,23 +3,19 @@ import {
   CodeSurferColumns,
   Step,
 } from "code-surfer";
-import { github, vsDark } from "@code-surfer/themes";
+import { ultraMin, vsDark, nightOwl } from "@code-surfer/themes";
+import webTheory1 from "./webtheory1.png"
+import webTheory2 from "./webtheory2.png"
+import webTheory3 from "./webtheory3.png"
 import appOverview from "./app_overview.png";
-import appOverview0 from "./app_overview_step_0.png";
-import appOverview1 from "./app_overview_step_1.png";
-import appOverview2 from "./app_overview_step_2.png";
 import appOverview3 from "./app_overview_step_3.png";
-export const theme = github;
+import productListImage from "./productList.png"
+import productItemImage from "./productItem.png"
+export const theme = ultraMin;
 
 <Head>
   <title>.Hack Vue Composition Workshop</title>
 </Head>
-
-<Header>
-
-# .Hack
-
-</Header>
 
 # Vue Composition Workshop
 
@@ -35,9 +31,36 @@ export const theme = github;
 
 # Agenda
 
-1. What is Composition API
-2. Why should I learn it
-3. Comparing Composition and Options API
+1. Web Theory
+2. What is Composition API
+3. Why should I learn it
+4. Comparing Composition and Options API
+
+---
+
+# Web Theory
+
+---
+
+# Webhosting in the past
+
+<Image src={webTheory1} style={{"width": "80vw", "background-size": "auto"}} />
+
+---
+
+# Server Side Rendering
+
+<Image src={webTheory2} style={{"width": "80vw", "background-size": "auto"}} />
+
+---
+
+# Client Side Rendering / Single Page Applications
+
+<Image src={webTheory3} style={{"width": "80vw", "background-size": "auto"}} />
+
+---
+
+# Vue Composition Api
 
 ---
 
@@ -65,20 +88,35 @@ export const theme = github;
 
 # Example Application
 
-<Image src={appOverview} style={{"width": "80vw", "background-size": "contain"}} />
+<Image src={appOverview} style={{width: "80vw", backgroundSize: "contain"}} />
 
 ---
 
-<CodeSurferColumns themes={[vsDark, github]}>
+<CodeSurferColumns themes={[github, nightOwl]}>
+
+<Step subtitle="App.vue">
+
+<Image src={appOverview3} style={{backgroundSize: "contain"}} />
+
+```jsx file=./project/options/src/app.vue showNumbers
+```
+
+</Step>
 
 <Step>
 
-<Image src={appOverview0} style={{"background-size": "contain"}} />
+<Image src={appOverview3} style={{backgroundSize: "contain"}} />
 
-```html
-<Page>
-    <Logo />
-</Page>
+```jsx 1:23 file=./project/options/src/app.vue showNumbers
+```
+
+</Step>
+
+<Step>
+
+<Image src={appOverview3} style={{backgroundSize: "contain"}} />
+
+```diff 21 subtitle="Look into this component first"
 ```
 
 </Step>
@@ -87,17 +125,76 @@ export const theme = github;
 
 ---
 
-<CodeSurferColumns themes={[vsDark, github]}>
+<CodeSurferColumns themes={[github, nightOwl]}>
+
+<Step subtitle="ProductList.vue">
+
+<Image src={productListImage} style={{backgroundSize: "contain"}} />
+
+```jsx file=./project/options/src/components/Products/ProductList.vue showNumbers
+```
+
+</Step>
+
+<Step subtitle='Template markup will remain the same between options and composition implementation'>
+
+<Image src={productListImage} style={{backgroundSize: "contain"}} />
+
+```jsx 1:7 file=./project/options/src/components/Products/ProductList.vue showNumbers
+```
+
+</Step>
+
+<Step subtitle="Look into how the component is implemented with options api">
+
+<Image src={productListImage} style={{backgroundSize: "contain"}} />
+
+```jsx 9:23 file=./project/options/src/components/Products/ProductList.vue showNumbers
+```
+
+</Step>
+
+<Step subtitle='Import statements'>
+
+<Image src={productListImage} style={{backgroundSize: "contain"}} />
+
+```diff 10:11
+```
+
+</Step>
+
+<Step subtitle='Vue instance object'>
+
+<Image src={productListImage} style={{backgroundSize: "contain"}} />
+
+```diff 13:22
+```
+
+</Step>
+
+<Step subtitle='Component declarations'>
+
+<Image src={productListImage} style={{backgroundSize: "contain"}} />
+
+```diff 14:18
+```
+
+</Step>
+
+<Step subtitle='Props Declaration'>
+
+<Image src={productListImage} style={{backgroundSize: "contain"}} />
+
+```diff 19:21
+```
+
+</Step>
 
 <Step>
 
-<Image src={appOverview1} style={{"background-size": "contain"}} />
+<Image src={productListImage} style={{backgroundSize: "contain"}} />
 
-```html
-<Page>
-    <Logo />
-    <SearchBarComponent />
-</Page>
+```jsx 9:23 file=./project/options/src/components/Products/ProductList.vue showNumbers title='Options API'
 ```
 
 </Step>
@@ -106,18 +203,74 @@ export const theme = github;
 
 ---
 
-<CodeSurferColumns themes={[vsDark, github]}>
+<CodeSurferColumns themes={[vsDark, nightOwl]}>
 
 <Step>
 
-<Image src={appOverview2} style={{"background-size": "contain"}} />
+```jsx 1:14 file=./project/composition/src/components/Products/ProductList.vue showNumbers title='Composition API'
+```
 
-```html
-<Page>
-    <Logo />
-    <SearchBarComponent />
-    <FilterComponent />
-</Page>
+```jsx 9:23 file=./project/options/src/components/Products/ProductList.vue showNumbers title='Options API'
+```
+
+</Step>
+
+<Step>
+
+```jsx 1 file=./project/composition/src/components/Products/ProductList.vue showNumbers title='Composition API' subtitle='Script declared with setup and typescript'
+```
+
+```jsx 9 file=./project/options/src/components/Products/ProductList.vue showNumbers title='Options API'
+```
+
+</Step>
+
+<Step subtitle='Import statements'>
+
+```diff 2:5 title='Composition API'
+```
+
+```jsx 10:11 file=./project/options/src/components/Products/ProductList.vue showNumbers title='Options API'
+```
+
+</Step>
+
+<Step>
+
+```diff 2:5 title='Composition API' subtitle='No need to declare components'
+```
+
+```jsx 14:18 file=./project/options/src/components/Products/ProductList.vue showNumbers title='Options API'
+```
+
+</Step>
+
+<Step subtitle='Props Declaration'>
+
+```diff 7:13 title='Composition API'
+```
+
+```jsx 19:21 file=./project/options/src/components/Products/ProductList.vue showNumbers title='Options API'
+```
+
+</Step>
+
+<Step subtitle='Look into ProductItem Component'>
+
+```diff 19 title='Composition API'
+```
+
+```diff 4 title='Options API'
+```
+
+</Step>
+
+<Step subtitle='Look into ProductItem Component'>
+
+```diff 19 title='Composition API'
+```
+
+```diff 4 title='Options API'
 ```
 
 </Step>
@@ -126,42 +279,43 @@ export const theme = github;
 
 ---
 
-<CodeSurferColumns themes={[vsDark, github]}>
+<CodeSurferColumns themes={[nightOwl, github, nightOwl]}>
 
-<Step>
+<Step subtitle="ProductList.vue">
 
-<Image src={appOverview3} style={{"background-size": "contain"}} />
+```jsx 22:39 file=./project/composition/src/components/Products/ProductItem.vue showNumbers title='Composition API'
+```
 
-```html
-<Page>
-    <Logo />
-    <SearchBarComponent />
-    <FilterComponent />
-    <ProductList>
-        <ProductItem>
-    </ProductList>
-</Page>
+<Image src={productItemImage} style={{backgroundSize: "contain"}} />
+
+```jsx 1:18 file=./project/options/src/components/Products/ProductItem.vue showNumbers title='Options API'
 ```
 
 </Step>
 
-</CodeSurferColumns>
+<Step subtitle="Component Styling">
 
----
-
-
-<CodeSurferColumns themes={[vsDark, github]}>
-
-<Step>
-
-```js file=./project/composition/src/app.vue
-
+```diff 41:51 showNumbers title='Composition API'
 ```
 
-```js file=./project/options/src/app.vue
+<Image src={productItemImage} style={{backgroundSize: "contain"}} />
 
+```diff 35:45 title='Options API'
 ```
 
 </Step>
+
+<Step>
+
+```diff 1:20 title='Composition API'
+```
+
+<Image src={productItemImage} style={{backgroundSize: "contain"}} />
+
+```diff 20:33 file=./project/options/src/components/Products/ProductItem.vue showNumbers title='Options API'
+```
+
+</Step>
+
 
 </CodeSurferColumns>

@@ -32,9 +32,9 @@ watch([brand, category], handleSearch)
 				@triggerSearch="handleSearch"
 			/>
 			<ProductFilter
-				:v-model:brand="brand"
+				v-model:brand="brand"
 				@update:brand="setBrand"
-				:v-model:category="category"
+				v-model:category="category"
 				@update:category="setCategory"
 				@resetFilter="resetFilter"
 			/>
