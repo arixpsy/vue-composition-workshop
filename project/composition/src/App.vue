@@ -11,7 +11,7 @@ import useProducts from '@/composables/useProducts'
 import useFilters from '@/composables/useFilters'
 
 const { products, getProducts, isLoadingProducts } = useProducts()
-const { brand, setBrand, category, setCategory, resetFilter } = useFilters()
+const { brand, category, resetFilter } = useFilters()
 
 const searchTerm = ref('')
 
@@ -33,9 +33,7 @@ watch([brand, category], handleSearch)
 			/>
 			<ProductFilter
 				v-model:brand="brand"
-				@update:brand="setBrand"
 				v-model:category="category"
-				@update:category="setCategory"
 				@resetFilter="resetFilter"
 			/>
 		</NSpace>

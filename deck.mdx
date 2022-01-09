@@ -3,7 +3,7 @@ import {
   CodeSurferColumns,
   Step,
 } from "code-surfer";
-import { ultraMin, vsDark, nightOwl } from "@code-surfer/themes";
+import { ultramin, vsDark, nightOwl, github } from "@code-surfer/themes";
 import webTheory1 from "./webtheory1.png"
 import webTheory2 from "./webtheory2.png"
 import webTheory3 from "./webtheory3.png"
@@ -11,7 +11,7 @@ import appOverview from "./app_overview.png";
 import appOverview3 from "./app_overview_step_3.png";
 import productListImage from "./productList.png"
 import productItemImage from "./productItem.png"
-export const theme = ultraMin;
+export const theme = ultramin;
 
 <Head>
   <title>.Hack Vue Composition Workshop</title>
@@ -42,7 +42,7 @@ export const theme = ultraMin;
 
 ---
 
-# Webhosting in the past
+# Web Hosting in the past
 
 <Image src={webTheory1} style={{"width": "80vw", "background-size": "auto"}} />
 
@@ -317,5 +317,190 @@ export const theme = ultraMin;
 
 </Step>
 
+</CodeSurferColumns>
+
+---
+
+<CodeSurferColumns themes={[github, nightOwl]}>
+
+<Step subtitle="Back to App.vue">
+
+<Image src={appOverview3} style={{backgroundSize: "contain"}} />
+
+```jsx file=./project/options/src/app.vue showNumbers
+```
+
+</Step>
+
+<Step>
+
+<Image src={appOverview3} style={{backgroundSize: "contain"}} />
+
+```jsx 1:23 file=./project/options/src/app.vue showNumbers
+```
+
+</Step>
+
+<Step>
+
+<Image src={appOverview3} style={{backgroundSize: "contain"}} />
+
+```diff 5:8 subtitle="Next we will look at the ProductSearchInput Component"
+```
+
+</Step>
+
+<Step>
+
+<Image src={appOverview3} style={{backgroundSize: "contain"}} />
+
+```diff 6:7  showNumbers subtitle="Binding 'searchTerm' data state and adding a 'triggerSearch' event handler"
+```
+
+</Step>
+
+<Step>
+
+<Image src={appOverview3} style={{backgroundSize: "contain"}} />
+
+```diff 5:8 subtitle="Child component should update 'searchTerm' state in parent and emit 'triggerSearch' event"
+```
+
+</Step>
+
+</CodeSurferColumns>
+
+---
+
+<CodeSurferColumns themes={[vsDark, nightOwl]}>
+
+<Step>
+
+```jsx file=./project/options/src/components/Products/ProductSearchInput.vue showNumbers title="ProductSearchInput.vue"
+```
+
+```jsx 5:8 file=./project/options/src/app.vue showNumbers title="App.vue"
+```
+
+</Step>
+
+<Step>
+
+```jsx 4:11,28:31 file=./project/options/src/components/Products/ProductSearchInput.vue title="ProductSearchInput.vue" subtitle='ProductSearchInput keeps track of its own input'
+```
+
+```jsx 5:8 file=./project/options/src/app.vue showNumbers title="App.vue"
+```
+
+</Step>
+
+<Step>
+
+```diff 6 title="ProductSearchInput.vue" subtitle='Emits an update to the parent whenever it changes'
+```
+
+```jsx 5:8 file=./project/options/src/app.vue showNumbers title="App.vue"
+```
+
+</Step>
+
+<Step>
+
+```diff 6 title="ProductSearchInput.vue" subtitle='Emits an update to the parent whenever it changes'
+```
+
+```jsx 6 file=./project/options/src/app.vue showNumbers title="App.vue" subtitle="Parent catches the emit event and update the state of 'searchTerm'"
+```
+
+</Step>
+
+<Step>
+
+```diff 2,12:13 title="ProductSearchInput.vue" subtitle="emit 'triggerSearch' event whenever form is submitted or search button is clicked"
+```
+
+```jsx 7 file=./project/options/src/app.vue showNumbers title="App.vue"
+```
+
+</Step>
+
+<Step>
+
+```diff 2,12:13 title="ProductSearchInput.vue" subtitle="emit 'triggerSearch' event whenever form is submitted or search button is clicked"
+```
+
+```jsx 7 file=./project/options/src/app.vue showNumbers title="App.vue" subtitle="Parent catches emit and calls the handleSearch function"
+```
+
+</Step>
+
+<Step>
+
+```diff 2,12:13 title="ProductSearchInput.vue" subtitle="emit 'triggerSearch' event whenever form is submitted or search button is clicked"
+```
+
+```jsx 60:62 file=./project/options/src/app.vue showNumbers title="App.vue" subtitle="handleSearch calls the API with new searchTerm value"
+```
+
+</Step>
+
+<Step>
+
+```jsx file=./project/options/src/components/Products/ProductSearchInput.vue showNumbers title="ProductSearchInput.vue"
+```
+
+```jsx file=./project/options/src/app.vue showNumbers title="App.vue"
+```
+
+</Step>
+
+</CodeSurferColumns>
+
+---
+
+<CodeSurferColumns themes={[vsDark, nightOwl]}>
+
+<Step subtitle="ProductSearchInput.vue">
+
+```jsx file=./project/options/src/components/Products/ProductSearchInput.vue showNumbers title="Options API"
+```
+
+```jsx file=./project/composition/src/components/Products/ProductSearchInput.vue showNumbers title="Composition API"
+```
+
+</Step>
+
+<Step>
+
+```diff 19:34 title="Options API"
+```
+
+```diff 1:5 title="Composition API"
+```
+
+</Step>
+
+<Step subtitle='Data option is condensed to a single line'>
+
+```diff 28:32 title="Options API"
+```
+
+```diff 3:4 title="Composition API"
+```
+
+</Step>
+
+</CodeSurferColumns>
+
+---
+
+<CodeSurferColumns themes={[nightOwl]}>
+
+<Step>
+
+```jsx file=./project/options/src/app.vue showNumbers title="App.vue" showNumbers
+```
+
+</Step>
 
 </CodeSurferColumns>

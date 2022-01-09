@@ -2,7 +2,7 @@
 	<form @submit.prevent="$emit('triggerSearch')">
 		<NInputGroup>
 			<NInput
-				v-model:value="input"
+				v-model="input"
 				@input="$emit('update:searchTerm', $event)"
 				size="large"
 				round

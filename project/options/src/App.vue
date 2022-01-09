@@ -8,9 +8,7 @@
 			/>
 			<ProductFilter
 				v-model:brand="brand"
-				@update:brand="setBrand"
 				v-model:category="category"
-				@update:category="setCategory"
 				@resetFilter="resetFilter"
 			/>
 		</NSpace>
@@ -64,12 +62,6 @@ export default {
       this.isLoadingProducts = true
       this.products = await api.getProducts(searchTerm, brand, category)
       this.isLoadingProducts = false
-    },
-    setBrand: function (brands) {
-      this.brand = brands
-    },
-    setCategory: function (categories) {
-      this.category = categories
     },
     resetFilter() {
       this.brand = []
