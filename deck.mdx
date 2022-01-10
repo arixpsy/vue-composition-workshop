@@ -4,13 +4,13 @@ import {
   Step,
 } from "code-surfer";
 import { ultramin, vsDark, nightOwl, github } from "@code-surfer/themes";
-import webTheory1 from "./webtheory1.png"
-import webTheory2 from "./webtheory2.png"
-import webTheory3 from "./webtheory3.png"
-import appOverview from "./app_overview.png";
-import appOverview3 from "./app_overview_step_3.png";
-import productListImage from "./productList.png"
-import productItemImage from "./productItem.png"
+import webTheory1 from "./slide-images/webtheory1.png"
+import webTheory2 from "./slide-images/webtheory2.png"
+import webTheory3 from "./slide-images/webtheory3.png"
+import appOverview from "./slide-images/app_overview.png";
+import appOverview3 from "./slide-images/app_overview_step_3.png";
+import productListImage from "./slide-images/productList.png"
+import productItemImage from "./slide-images/productItem.png"
 export const theme = ultramin;
 
 <Head>
@@ -42,7 +42,7 @@ export const theme = ultramin;
 
 ---
 
-# Web Hosting in the past
+# Web hosting in the past
 
 <Image src={webTheory1} style={{"width": "80vw", "background-size": "auto"}} />
 
@@ -271,7 +271,7 @@ export const theme = ultramin;
 
 <CodeSurferColumns themes={[nightOwl, github, nightOwl]}>
 
-<Step subtitle="ProductList.vue">
+<Step subtitle="ProductItem.vue">
 
 ```jsx 22:39 file=./project/composition/src/components/Products/ProductItem.vue showNumbers title='Composition API'
 ```
@@ -556,9 +556,95 @@ export const theme = ultramin;
 
 </Step>
 
-<Step>
+<Step subtitle="Instead of comparing the two code bases. let's just rebuild App.vue with the Composition API">
 
 ```diff 23:72 title="App.vue"
+```
+
+</Step>
+
+</CodeSurferColumns>
+
+---
+
+<CodeSurferColumns themes={[nightOwl, vsDark]}>
+
+<Step subtitle='Starting with the template as our base'>
+
+```jsx 1:21 file=./project/options/src/app.vue showNumbers title='Options API'
+```
+
+```jsx file=./slide-code/App0.vue showNumbers title='Composition API'
+```
+
+</Step>
+
+<Step subtitle='We want to achieve the same functionality with Composition API'>
+
+```jsx 23:72 file=./project/options/src/app.vue showNumbers title='Options API'
+```
+
+```jsx file=./slide-code/App1.vue showNumbers title='Composition API'
+```
+
+</Step>
+
+<Step subtitle='We start with the component imports required for the page'>
+
+```jsx 23:72 file=./project/options/src/app.vue showNumbers title='Options API'
+```
+
+```jsx file=./slide-code/App2.vue showNumbers title='Composition API'
+```
+
+</Step>
+
+<Step subtitle='Next we need to manage the state of searchTerm within our component'>
+
+```jsx 23:72 file=./project/options/src/app.vue showNumbers title='Options API'
+```
+
+```jsx 16 file=./slide-code/App2.vue showNumbers title='Composition API'
+```
+
+</Step>
+
+<Step subtitle='We will use a ref for to manage this'>
+
+```jsx 23:72 file=./project/options/src/app.vue showNumbers title='Options API'
+```
+
+```jsx file=./slide-code/App3.vue showNumbers title='Composition API'
+```
+
+</Step>
+
+<Step subtitle='By declaring this, we will be able to use searchTerm within our template'>
+
+```jsx 23:72 file=./project/options/src/app.vue showNumbers title='Options API'
+```
+
+```jsx 11,19 file=./slide-code/App3.vue showNumbers title='Composition API'
+```
+
+</Step>
+
+<Step subtitle='*Note* that ref is external module that we import. data() will always be tied to a component'>
+
+```jsx 37:45 file=./project/options/src/app.vue showNumbers title='Options API'
+```
+
+```jsx 2 file=./slide-code/App3.vue showNumbers title='Composition API'
+```
+
+</Step>
+
+<Step subtitle='This means reactive state is no longer bounded to the scope of a vue component anymore and we can create reactive code anywhere'>
+
+```jsx 37:45 file=./project/options/src/app.vue showNumbers title='Options API'
+```
+
+```jsx 2,11 file=./slide-code/App3.vue showNumbers title='Composition API'
 ```
 
 </Step>
@@ -571,9 +657,124 @@ export const theme = ultramin;
 
 <Step>
 
-```jsx file=./project/composition/src/app.vue showNumbers title="App.vue" showNumbers
+```js title="useProducts.ts" showNumbers subtitle="Let's create create the state for products"
+```
+
+</Step>
+
+<Step>
+
+```js title="useProducts.ts" subtitle='First we import ref, our product type and our api helper'
+import { ref } from 'vue'
+import { ProductProp } from '@/types/products'
+import api from '@/api'
+```
+
+</Step>
+
+<Step>
+
+```js title="useProducts.ts"
+import { ref } from 'vue'
+import { ProductProp } from '@/types/products'
+import api from '@/api'
+
+export default function useProducts(){
+
+    return {
+
+    }
+}
+```
+
+</Step>
+
+<Step>
+
+```js title="useProducts.ts"
+import { ref } from 'vue'
+import { ProductProp } from '@/types/products'
+import api from '@/api'
+
+export default function useProducts(){
+    const products = ref<Array<ProductProp>>([])
+    const isLoadingProducts = ref<boolean>(false)
+
+    return {
+        isLoadingProducts,
+        products,
+    }
+}
+```
+
+</Step>
+
+<Step>
+
+```js title="useProducts.ts"
+import { ref } from 'vue'
+import { ProductProp } from '@/types/products'
+import api from '@/api'
+
+export default function useProducts(){
+    const products = ref<Array<ProductProp>>([])
+    const isLoadingProducts = ref<boolean>(false)
+
+    const getProducts = async (
+        searchTerm: string,
+        brands: Array<string>,
+        categories: Array<string>
+    ): Promise<Array<ProductProp>> => {
+        isLoadingProducts.value = true
+        const data = await api.getProducts(searchTerm, brands, categories)
+        products.value = data
+        isLoadingProducts.value = false
+        return data
+    }
+
+    return {
+        isLoadingProducts,
+        products,
+        getProducts,
+    }
+}
+```
+
+</Step>
+
+<Step>
+
+```js title="useProducts.ts"
+import { ref } from 'vue'
+import { ProductProp } from '@/types/products'
+import api from '@/api'
+
+export default function useProducts(){
+    const products = ref<Array<ProductProp>>([])
+    const isLoadingProducts = ref<boolean>(false)
+
+    const getProducts = async (
+        searchTerm: string,
+        brands: Array<string>,
+        categories: Array<string>
+    ): Promise<Array<ProductProp>> => {
+        isLoadingProducts.value = true
+        const data = await api.getProducts(searchTerm, brands, categories)
+        products.value = data
+        isLoadingProducts.value = false
+        return data
+    }
+
+    return {
+        isLoadingProducts,
+        products,
+        getProducts,
+    }
+}
 ```
 
 </Step>
 
 </CodeSurferColumns>
+
+---
