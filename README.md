@@ -2,6 +2,8 @@
 
 <img width="100%" src="./codesurfer.gif">
 
+
+# Example Application
 <img width="100%" src="./slide-images/app_overview.png">
 
 # Running Code Surfer
