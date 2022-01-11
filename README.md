@@ -2,6 +2,7 @@
 
 <img width="100%" src="./codesurfer.gif">
 
+[Link to Code Surfer](https://dothack-vue-composition-workshop.netlify.app/)
 
 # Example Application
 <img width="100%" src="./slide-images/app_overview.png">
