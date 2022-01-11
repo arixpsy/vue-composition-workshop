@@ -45,8 +45,7 @@ yarn serve
 ```
 
 # Libraries Used:
-Vue 3
-Lodash
-Naive UI
-Typescript
-Mirage JS
+- [Vue 3](https://v3.vuejs.org/)
+- [Lodash](https://lodash.com/)
+- [Naive UI](https://www.naiveui.com/en-US/light)
+- [Mirage JS](https://miragejs.com/)
