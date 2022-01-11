@@ -1,23 +1,50 @@
-# MDX Deck + Code Surfer template
+# .Hack Vue Composition workshop
 
-This project was generated with the `npm init code-surfer-deck` command.
+<img width="100%" src="./codesurfer.gif">
 
-## Development
+<img width="100%" src="./slide-images/app_overview.png">
 
-To run the presentation deck in development mode:
+# Running Code Surfer
 
-```sh
-npm start
+```bash
+#install dependencies
+yarn
+
+# run code surfer on  http://localhost:8000/
+yarn start
+
+# build
+yarn build
 ```
 
-Edit the [`deck.mdx`](deck.mdx) file to get started.
+# Running Example Projects
+## Composition API Project
+```bash
+# navigate to folder
+cd project/composition
 
-## Exporting
+#install dependencies
+yarn
 
-To build the presentation deck:
-
-```sh
-npm run build
+# run project on  http://localhost:8080/
+yarn serve
 ```
 
-For more documentation see [MDX Deck](https://github.com/jxnblk/mdx-deck) and [Code Surfer](https://codesurfer.pomb.us/)
+## Options API Project
+```bash
+# navigate to folder
+cd project/options
+
+#install dependencies
+yarn
+
+# run project on  http://localhost:8080/
+yarn serve
+```
+
+# Libraries Used:
+Vue 3
+Lodash
+Naive UI
+Typescript
+Mirage JS
