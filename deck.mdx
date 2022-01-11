@@ -60,6 +60,10 @@ export const theme = ultramin;
 
 ---
 
+# Any Questions?
+
+---
+
 # Vue Composition Api
 
 ---
@@ -674,7 +678,7 @@ import api from '@/api'
 
 <Step>
 
-```js title="useProducts.ts"
+```js title="useProducts.ts" subtitle='Allow our states to be imported from other files'
 import { ref } from 'vue'
 import { ProductProp } from '@/types/products'
 import api from '@/api'
@@ -691,7 +695,7 @@ export default function useProducts(){
 
 <Step>
 
-```js title="useProducts.ts"
+```js title="useProducts.ts" subtitle='Declare products and isLoadingProducts states'
 import { ref } from 'vue'
 import { ProductProp } from '@/types/products'
 import api from '@/api'
@@ -711,7 +715,7 @@ export default function useProducts(){
 
 <Step>
 
-```js title="useProducts.ts"
+```js title="useProducts.ts" subtitle='Declare getProducts method'
 import { ref } from 'vue'
 import { ProductProp } from '@/types/products'
 import api from '@/api'
@@ -744,7 +748,7 @@ export default function useProducts(){
 
 <Step>
 
-```js title="useProducts.ts"
+```js title="useProducts.ts" subtitle='You have created your first composable'
 import { ref } from 'vue'
 import { ProductProp } from '@/types/products'
 import api from '@/api'
@@ -778,3 +782,85 @@ export default function useProducts(){
 </CodeSurferColumns>
 
 ---
+
+<CodeSurferColumns themes={[nightOwl, vsDark]}>
+
+<Step subtitle='Back to App.vue'>
+
+```jsx 23:72 file=./project/options/src/app.vue showNumbers title='Options API'
+```
+
+```jsx 1:12 file=./slide-code/App3.vue showNumbers title='Composition API'
+```
+
+</Step>
+
+<Step subtitle="Let's import and use our new composable">
+
+```jsx 40,41,61:65 file=./project/options/src/app.vue showNumbers title='Options API'
+```
+
+```jsx file=./slide-code/App4.vue showNumbers title='Composition API'
+```
+
+</Step>
+
+<Step subtitle="We can do the same for the brand and category states for our filter">
+
+```jsx 42,43,66:69 file=./project/options/src/app.vue showNumbers title='Options API'
+```
+
+```jsx file=./slide-code/App5.vue showNumbers title='Composition API'
+```
+
+</Step>
+
+<Step subtitle="Declare handleSearch function">
+
+```jsx 58:60 file=./project/options/src/app.vue showNumbers title='Options API'
+```
+
+```jsx file=./slide-code/App6.vue showNumbers title='Composition API'
+```
+
+</Step>
+
+<Step subtitle="Import onMounted and watch modules">
+
+```jsx 46:56 file=./project/options/src/app.vue showNumbers title='Options API'
+```
+
+```jsx file=./slide-code/App7.vue showNumbers title='Composition API'
+```
+
+</Step>
+
+<Step subtitle="Declare mounted lifecycle hook and watchers">
+
+```jsx 46:56 file=./project/options/src/app.vue showNumbers title='Options API'
+```
+
+```jsx file=./slide-code/App8.vue showNumbers title='Composition API'
+```
+
+</Step>
+
+<Step subtitle="Final comparison">
+
+```jsx 23:72 file=./project/options/src/app.vue showNumbers title='Options API'
+```
+
+```jsx 1:24 file=./slide-code/App8.vue showNumbers title='Composition API'
+```
+
+</Step>
+
+</CodeSurferColumns>
+
+---
+
+# Any Questions?
+
+---
+
+# Thank you!

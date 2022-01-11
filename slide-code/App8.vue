@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 import { NSpace, NSpin } from 'naive-ui'
 import {
   ProductSearchInput,
@@ -8,10 +8,19 @@ import {
 } from './components/Products'
 import Page from '@/components/Commons/Page.vue'
 import useProducts from '@/composables/useProducts'
+import useFilters from '@/composables/useFilters'
 
 const { products, getProducts, isLoadingProducts } = useProducts()
+const { brand, category, resetFilter } = useFilters()
 
 const searchTerm = ref('')
+
+const handleSearch = () =>
+  getProducts(searchTerm.value, brand.value, category.value)
+
+onMounted(handleSearch)
+
+watch([brand, category], handleSearch)
 </script>
 
 <template>

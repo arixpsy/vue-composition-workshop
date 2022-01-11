@@ -8,8 +8,10 @@ import {
 } from './components/Products'
 import Page from '@/components/Commons/Page.vue'
 import useProducts from '@/composables/useProducts'
+import useFilters from '@/composables/useFilters'
 
 const { products, getProducts, isLoadingProducts } = useProducts()
+const { brand, category, resetFilter } = useFilters()
 
 const searchTerm = ref('')
 </script>
